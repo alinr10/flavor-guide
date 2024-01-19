@@ -18,7 +18,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/layout/header/header";
-import Footer from "../../components/layout/footer/footer";
+//import Footer from "../../components/layout/footer/footer";
 
 import PersonalProfile from "./tabs/profile/personal/profile";
 import CompanyProfile from "./tabs/profile/company/profile";
@@ -70,7 +70,7 @@ export default function Index() {
     }catch(error){
     
     }
-         
+
         };
 
        
@@ -117,13 +117,14 @@ export default function Index() {
       const response = await axios.get("http://localhost:3001/user/check-session", { withCredentials: true });
 
       if (response.data.loggedIn) {
-        setIsLoggedIn(true); // Oturum varsa true yap
+        setIsLoggedIn(true);
       } else {
-        setIsLoggedIn(false); // Oturum yoksa false yap
+        setIsLoggedIn(false); 
       }
     } catch (error) {
       console.error("Oturum kontrolünde hata:", error);
       setIsLoggedIn(false);
+  
     }
   };
 
@@ -286,10 +287,9 @@ export default function Index() {
             </div>
           )}
         </div>
-        <Footer />
       </div>
     
-    )
+    )                 
   );
 
   

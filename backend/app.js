@@ -4,9 +4,8 @@ import dotenv from 'dotenv'
 import UserModel from './src/models/User.js'
 import bcrypt from 'bcrypt'
 import userRoute from './src/routes/userRoute.js';
-import jobRoute from './src/routes/jobRoute.js';
-import applicantRoute from './src/routes/applicantRoute.js'
-import freelancerRoute from './src/routes/freelancerRoute.js'
+import orderRoute from './src/routes/orderRoute.js';
+
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import multer from 'multer';
@@ -63,12 +62,8 @@ app.use(express.json())
 
 conn()
 
-app.use('/freelancer',freelancerRoute);
 app.use('/user', userRoute);
-app.use('/job',jobRoute);
-app.use('/applicant',applicantRoute)
-app.use('/uploads',express.static('uploads'));
-
+app.use('/order',orderRoute)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

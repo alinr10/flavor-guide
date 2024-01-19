@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
   import Header from "../../components/layout/header/header";
   import Footer from "../../components/layout/footer/footer";
   import Banner from "../../components/banner/banner";
-  import Sidebox from "../../components/sidebox/sidebox";
+  //import Sidebox from "../../components/sidebox/sidebox";
   import Loginbox from "../../components/layout/loginbox/loginbox";
   import Registerbox from "../../components/layout/registerbox/registerbox";
 
@@ -198,8 +198,6 @@ try {
           setRegisterboxVisibility={setRegisterboxVisibility}
         />
         <Banner setRegisterboxVisibility={setRegisterboxVisibility} />
-        <Sidebox />
-        <Footer />
         {!isLoggedIn && (
           <>
             <Loginbox

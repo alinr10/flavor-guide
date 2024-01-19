@@ -1,6 +1,6 @@
 import banner1 from "../../images/banner1.png";
 import banner2 from "../../images/banner2.png";
-import banner3 from "../../images/banner3.png";
+import ai from "../../images/ai-menuu.jpg";
 
 export default function Banner({ setRegisterboxVisibility }) {
   const handleLetsStartClick = () => {
@@ -12,11 +12,11 @@ export default function Banner({ setRegisterboxVisibility }) {
       <div className="container">
         <div className="banner__left">
           <h1>
-            Get the <b>perfect</b> talent for your project
+          Get <b>special</b> meals for you with AI
+
           </h1>
           <p>
-            Talenter makes it easy to get top-notch talents with AI-based
-            matching, talents who can help you get the job done right
+          This application aims to develop an artificial intelligence-based menu recommendation system for restaurants.
           </p>
           <h3>
             <a className="banner__left__button" onClick={handleLetsStartClick}>
@@ -25,12 +25,8 @@ export default function Banner({ setRegisterboxVisibility }) {
           </h3>
         </div>
         <div className="banner__right">
-          <img src={banner1} alt="" />
-          <div>
-            <img src={banner2} alt="" />
-            <img src={banner3} alt="" />
-          </div>
-        </div>
+          <img src={ai} alt="" />
+       </div>
       </div>
     </section>
   );

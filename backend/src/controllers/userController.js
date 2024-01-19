@@ -198,125 +198,6 @@ function checkPasswordValidity(password) {
   }
 };
   
-   
-const getProfile = async (req,res)=>{
-
-
-console.log(req.params.id,"backenddesin")
- if(req.session.userId==req.params.id) {
-  const user = await UserModel.findById(req.session.userId).populate('experiences achievements projects educations');
-  
-  if (!user) {
-    res.status(404).json({message:"profile is not found "})
-  }
-  
-  return res.send(user);
-  
- }
- else {
-  const user2 = await UserModel.findById(req.params.id).populate('experiences achievements projects educations');
-  return res.send(user2);
-
- }
-
-
-   
-}
-
-  const addPersonalDetail= async (req,res)=>{
-
-    try {
-
-      const {firstName,lastName,birthday,gender,languages,skills,profileDescription,address} = req.body;
-      if (req.session.userId) {
-        const personalDetails = await UserModel.findByIdAndUpdate(req.session.userId,{
-
-        firstName:firstName,
-        lastName: lastName,
-        birthday:birthday,
-        gender:gender,
-        languages:languages,
-        skills:skills,
-        profileDescription:profileDescription,
-        address:address
-
-      })
-      if (personalDetails) {
-        res.status(200).json({
-          message: 'Personal details has been updated successfully',})
-      } else {
-        res.status(404).json({
-          message: 'Personal details not found or not updated',
-        });
-    
-
-      }
-
-      }
-      
-      
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'İç sunucu hatası' });
-    }
-};
-
-
-const addCompanyDetail  = async (req,res)=>{
-  
-
-  try {
-
-    const {companyName,  firstName , lastName,companyWebsite, companyYearOfFoundation, companySector, 
-      companyDescription,
-      email, companyAddress, companyCountry, companyCity, companyFacebookUrl
-      ,companyTwitterUrl, companyGoogleUrl,companyLinkedinUrl,
-      phone
-    } = req.body;
-
-    if (req.session.userId) {
-      const  companyDetails = await UserModel.findByIdAndUpdate(req.session.userId,{
-
-
-        
-        companyName:companyName,
-        companyWebsite:companyWebsite,
-        companyYearOfFoundation:companyYearOfFoundation,
-        companySector:companySector,
-        companyDescription:companyDescription,
-        firstName:firstName,
-        lastName: lastName,
-        email:email,
-        companyAddress:companyAddress,
-        companyCountry:companyCountry,
-        companyCity:companyCity,
-        companyFacebookUrl:companyFacebookUrl,
-        companyTwitterUrl:companyTwitterUrl,
-        companyGoogleUrl:companyGoogleUrl,
-        companyLinkedinUrl:companyLinkedinUrl,
-        phone:phone
-    
-
-    })
-    if (companyDetails) {
-      res.status(200).json({
-        message: 'Personal details has been updated successfully',})
-    } else {
-      res.status(404).json({
-        message: 'Personal details not found or not updated',
-      });
-  
-
-    }
-
-    }
-    
-    
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'İç sunucu hatası' });
-  }
-}
 
 const checkUser=async(req,res)=>{
 
@@ -338,67 +219,9 @@ const userId=req.session.userId
 
 
 
-const addProfilePicture = async(req,res)=>{
-  try {
-    //const {profilePhoto}= req.body;
-    
-      const  userId  = req.session.userId; 
-     // Varsayalım ki kullanıcı kimliği bir önceki adımda middleware veya başka bir yerde ayarlanmıştır
-    
-      console.log("profil:",req.file.path)
-      const newPhotoPath =(req.file.path).replace(/\\+/g, '/').replace(/(\.\.\/frontend\/public)/, '');
-      console.log("yeni profil:",newPhotoPath)
-
-    console.log("id:",userId)
-      // Kullanıcıyı bul ve profil fotoğrafını güncelle
-      const user = await UserModel.findById(userId);
-
-      if (!user) {
-        return res.status(404).json({ error: 'Kullanıcı bulunamadı' });
-      }
-    
-      user.profilePhoto = newPhotoPath;
-      await user.save();
-    
-      res.send(user)
-    } catch (error) {
-      
-      res.status(500).json({ error: 'Bir hata oluştu' });
-    }
-    
-}
 
 
-const beFreelancer= async (req,res)=>{
 
-  try {
-
-    const {profession,description,speciality} = req.body;
-    if (req.session.userId) {
-      const becomeFreelancer = await UserModel.findByIdAndUpdate(req.session.userId,{
-
-          profession:profession,
-          description: description,
-          speciality:speciality,
-     
-
-    })
-    if (becomeFreelancer) {
-      res.status(200).json({
-        message: 'becomeFreelancer has been updated successfully',})
-    } else {
-      res.status(404).json({
-        message: 'becomeFreelancernot found or not updated',
-      });
-    }
-
-    }
-    
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'İç sunucu hatası' });
-  }
-};
 const showProfile = async(req,res)=>{
 
   try {
@@ -414,5 +237,5 @@ console.log("bu gelen id:",id)
   }
 }
 
-export {registerCompanyUser,registerPersonelUser,login,logout,addPersonalDetail,getProfile,checkUser,addProfilePicture,addCompanyDetail,
-beFreelancer,showProfile}
+export {registerCompanyUser,registerPersonelUser,login,logout,checkUser
+,showProfile}

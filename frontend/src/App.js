@@ -13,6 +13,7 @@ import LoadingProfile from './pages/loading/index';
 import UpdateUser from './pages/profile/tabs/profile/personal/profile';
  import Showprofile from './pages/profile/tabs/profile/personal/showProfile';
  import ShowAI from "./pages/profile/tabs/search-job/showAI";
+ import Order from "./pages/profile/order"
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null); // Kullanıcının ID'sini saklamak için
@@ -61,6 +62,8 @@ function App() {
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/showProfile" element={<Showprofile />} />
       <Route path="/showAI" element={<ShowAI />} />
+      <Route path="/order" element={<Order />} />
+
     </Routes>
   );
 }

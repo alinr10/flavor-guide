@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const conn = () => {
   mongoose.connect(process.env.DB_URI, {
-      dbName: 'unreact',
+      dbName: 'flavor-guide',
        })
     .then(() => {
       console.log('Connected to the DB succesully');
