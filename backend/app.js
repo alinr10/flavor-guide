@@ -5,8 +5,8 @@ import UserModel from './src/models/User.js'
 import bcrypt from 'bcrypt'
 import userRoute from './src/routes/userRoute.js';
 import orderRoute from './src/routes/orderRoute.js';
+import cookieParser from 'cookie-parser';
 
-import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import multer from 'multer';
 import path from 'path';
@@ -30,21 +30,6 @@ app.use(upload.single('profilePhoto'));
 
 
 
-app.use(session({
-  secret: process.env.SECRET_TOKEN,
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.DB_URI })
-
-}));
-
-
-app.use(session({
-  secret: process.env.SECRET_TOKEN, 
-  resave: true,
-  saveUninitialized: true,
-   //cookie: { secure: false }
-}));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -52,18 +37,18 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, x-access-token");
   res.header("Access-Control-Allow-Credentials", "true");
 
-  res.locals.user = req.session.user;
   next();
 });
 
 
+app.use(cookieParser())
 
 app.use(express.json())
 
 conn()
 
 app.use('/user', userRoute);
-app.use('/order',orderRoute)
+app.use('/order', orderRoute)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

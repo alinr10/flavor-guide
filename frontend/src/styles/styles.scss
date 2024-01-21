@@ -35,30 +35,33 @@ a {
   cursor: pointer;
 }
 
-button {
-  background: none;
-  border: 1px solid #555;
-  color: #fff;
-  padding: 15px;
-  align-self: center;
-  cursor: pointer;
-  transition: all ease-in-out 0.3s;
-  -webkit-transition: all ease-in-out 0.3s;
-  text-transform: uppercase;
-  font-family: "Poppins";
-  min-width: 90px;
+// button {
+//   background: none;
+//   border: 1px solid #555;
+//   color: #fff;
+//   padding: 15px;
+//   align-self: center;
+//   cursor: pointer;
+//   transition: all ease-in-out 0.3s;
+//   -webkit-transition: all ease-in-out 0.3s;
+//   text-transform: uppercase;
+//   font-family: "Poppins";
+//   min-width: 90px;
 
-  &:hover {
-    border-color: #f1bd4c;
-    color: #f1bd4c;
-  }
+//   &:hover {
+//     border-color: #f1bd4c;
+//     color: #f1bd4c;
+//   }
+// }
+
+#accept:hover {
+  background-color: rgb(15, 114, 15);
 }
-#accept:hover{
-  background-color:rgb(15, 114, 15);
+
+#reject:hover {
+  background-color: rgb(129, 16, 16);
 }
-#reject:hover{
-  background-color:rgb(129, 16, 16);
-}
+
 input {
   font-family: "Poppins";
   border: 0;
@@ -216,7 +219,7 @@ select {
 
 #root:not(.homepage),
 .wrapper {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -248,7 +251,7 @@ select {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  
+
   align-items: center;
   padding: 0 30px;
   justify-content: center;
@@ -1317,17 +1320,170 @@ select {
     }
   }
 }
-.showAI{
+
+.showAI {
   position: relative;
-  left:250px;
-  top:10px;
-  height:45px ;
+  left: 250px;
+  top: 10px;
+  height: 45px;
   text-align: center;
 }
 
-#searchJob{
+#searchJob {
   position: absolute;
-  top:60px;
+  top: 60px;
 
 
+}
+
+
+// .meal-container {
+//   display: flex;
+//   justify-content: space-between;
+//   margin: 20px;
+//   /* İstediğiniz boşluk değerini ayarlayın */
+// }
+
+
+
+
+
+// .box-head img {
+//   width: 100%;
+//   height: 200px;
+//   /* Resim yüksekliği ayarlayın */
+//   object-fit: cover;
+//   /* Resmi kutu içine sığdır */
+//   border-bottom: 1px solid #ddd;
+//   /* Resmin altına ince bir çizgi ekle */
+// }
+
+// .menu-catagory {
+//   position: absolute;
+//   top: 5px;
+//   left: 5px;
+//   background-color: #fff;
+//   padding: 5px;
+//   font-size: 12px;
+//   font-weight: bold;
+//   border: 1px solid #ddd;
+//   border-radius: 5px;
+// }
+
+
+
+
+
+// .box-bottom {
+//   padding: 10px;
+//   text-align: center;
+// }
+
+// button {
+//   background-color: #4caf50;
+//   color: #fff;
+//   padding: 8px 16px;
+//   border: none;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   font-size: 14px;
+// }
+
+// button:hover {
+//   background-color: #45a049;
+// }
+
+
+.new-row {
+  clear: both;
+}
+
+.meal-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  /* İstediğiniz boşluk değerini ayarlayın */
+  flex-wrap: wrap;
+  /* Kutuları aşağıya kaydır */
+}
+
+.meal-box {
+  width: 250px;
+  /* İstediğiniz genişlik değerini ayarlayın */
+  height: 350px;
+  /* İstediğiniz yükseklik değerini ayarlayın */
+  margin-right: 20px;
+  /* İstediğiniz sağ boşluk değerini ayarlayın */
+  border: 1px solid #ddd;
+  /* Kutu çerçeve rengi */
+  border-radius: 8px;
+  /* Kutu kenar yuvarlama */
+  overflow: hidden;
+  /* İçeriğin kutu dışına taşmasını engelle */
+  float: left;
+  margin-right: 20px;
+  flex-basis: 20%;
+  /* Kutu genişliğini yüzde olarak belirle */
+  margin-bottom: 20px;
+  /* Kutu alt boşluğunu ayarla */
+}
+
+
+.box-head {
+  position: relative;
+}
+
+.box-head img {
+  width: 100%;
+  height: 200px;
+  /* Resim yüksekliği ayarlayın */
+  object-fit: cover;
+  /* Resmi kutu içine sığdır */
+  border-bottom: 1px solid #ddd;
+  /* Resmin altına ince bir çizgi ekle */
+}
+
+.menu-catagory {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #fff;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+.prices {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.box-bottom {
+  padding: 10px;
+  text-align: center;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+
+#food {
+  font-size: 30px;
 }

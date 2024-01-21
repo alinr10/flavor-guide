@@ -6,39 +6,52 @@ import "./styles/responsive.scss";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import Homepage from './pages/homepage/homepage';
 import Profile from './pages/profile/index';
 import LoadingProfile from './pages/loading/index';
 import UpdateUser from './pages/profile/tabs/profile/personal/profile';
- import Showprofile from './pages/profile/tabs/profile/personal/showProfile';
- import ShowAI from "./pages/profile/tabs/search-job/showAI";
- import Order from "./pages/profile/order"
+import Showprofile from './pages/profile/tabs/profile/personal/showProfile';
+import ShowAI from "./pages/profile/tabs/search-job/showAI";
+import Order from "./pages/profile/order"
+import Food from "./pages/profile/tabs/food"
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  //const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null); // Kullanıcının ID'sini saklamak için
 
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
   useEffect(() => {
-    const checkSession = async () => {
+    const checkUserToken = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/user/check-session', { withCredentials: true });
+        const storedUserToken = localStorage.getItem('userToken');
+        const expirationTime = localStorage.getItem('tokenExpiration');
 
-        if (response.data.loggedIn) {
+        const currentTime = new Date().getTime();
+
+        if (storedUserToken && expirationTime && currentTime < expirationTime) {
           setIsLoggedIn(true);
-
-          console.log(response.data.userId)
-          setUserId(response.data.userId); // Kullanıcının ID'sini sakla
         } else {
           setIsLoggedIn(false);
+          localStorage.removeItem('userToken');
+          localStorage.removeItem('tokenExpiration');
         }
       } catch (error) {
-        console.error('Oturum kontrolünde hata:', error);
+        console.error('Oturum kontrol hatası:', error);
         setIsLoggedIn(false);
       }
     };
 
-    checkSession();
-  }, []);
+    checkUserToken();
+  }, [navigate]);
+
+  if (isLoggedIn === null) {
+    return <div>Yükleniyor...</div>;
+  }
 
   return (
     <Routes>
@@ -63,6 +76,7 @@ function App() {
       <Route path="/showProfile" element={<Showprofile />} />
       <Route path="/showAI" element={<ShowAI />} />
       <Route path="/order" element={<Order />} />
+      <Route path="/food" element={<Food />} />
 
     </Routes>
   );

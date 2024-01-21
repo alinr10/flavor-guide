@@ -4,6 +4,7 @@ import gifHello from "../../../src/images/a-unscreen.gif";
 import gifSearching from "../../../src/images/2-unscreen.gif";
 import gifHappy from "../../../src/images/b-unscreen.gif";
 import Select from "react-select";
+import { jwtDecode } from "jwt-decode";
 
 export default function ShowAI(props) {
   const [loading, setLoading] = useState(false);
@@ -63,7 +64,13 @@ export default function ShowAI(props) {
     { label: "Havuç Tarator", value: "Havuç Tarator" },
     { label: "Ispanaklı Karnabahar", value: "Ispanaklı Karnabahar" },
   ];
-  
+
+  const userToken = localStorage.getItem('userToken')
+
+  const user = jwtDecode(userToken)
+  //const fullName = user.firstName + " " + user.lastName
+  const userId = user.userId
+
   useEffect(() => {
     setCategoryOptions(CategoryOptions);
   }, []);
@@ -86,12 +93,13 @@ export default function ShowAI(props) {
         name,
         description,
         payment,
+        userId
       })
       .then((response) => {
         console.log("Backend'den gelen yanıt: ", response.data);
 
-        if(response.data.success) {
-            alert('sipariş verildi')
+        if (response.data.success) {
+          alert('sipariş verildi')
         }
         setAnalysisResult(response.data);
       })
@@ -110,7 +118,7 @@ export default function ShowAI(props) {
   };
 
 
-  
+
   return (
     <>
       <div className="wrapper">
@@ -132,8 +140,8 @@ export default function ShowAI(props) {
 
               <div style={{}}>
 
-              <div style={{ maxWidth: 600 }}>
-                  <label>Sub Category</label>
+                <div style={{ maxWidth: 600 }}>
+                  <label>Foods</label>
                   <Select
                     value={name}
                     options={CategoryOptions}
@@ -170,7 +178,7 @@ export default function ShowAI(props) {
                 </button>
               </div>
 
-          
+
             </div>
           </div>
         </div>
