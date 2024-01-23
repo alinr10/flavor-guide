@@ -55,6 +55,9 @@ const RecipeList = () => {
         { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
         { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
         { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
+        { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
+        { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
+        { name: 'Hünkar Beğendi', content: 'Lezzetli bir Hünkar Beğendi', price: '$14.99', image: 'https://www.karaca.com/blog/wp-content/uploads/2022/04/hunkar-begendi-head-4.webp' },
 
 
     ];
@@ -66,7 +69,7 @@ const RecipeList = () => {
 
             <div className="meal-container">
                 {meals.map((meal, index) => (
-                    <div key={index} className={`meal-box ${index % 5 === 4 ? 'new-row' : ''}`} style={{ flexBasis: '20%' }}>
+                    <div key={index} className={`meal-box ${index % 5 === 4 ? 'new-row' : ''}`} style={{ flexBasis: '18%' }}>
                         <div className="box-head">
                             <img src={meal.image} alt={meal.name} />
                             <h3>{meal.name}</h3>

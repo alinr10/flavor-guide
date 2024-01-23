@@ -22,7 +22,7 @@ export default function Header(props) {
       <nav className="container">
         <div className="sub__container">
           <Link to="/" className="logo">
-Flavor Guide            </Link>
+            Flavor Guide            </Link>
         </div>
         {!auth && (
           <ul className={auth ? "" : "active"}>
@@ -39,13 +39,15 @@ Flavor Guide            </Link>
             {!isProfileHidden && (
               <li>
                 <Link to={"/order"} >Order</Link>
+                <Link to={"/my-orders"} >My orders</Link>
+
                 <Link to={"/personalized"} >Personalized Meal
-</Link>
+                </Link>
               </li>
-              
+
             )}
             <li>
-             <a onClick={logout}>Logout</a>
+              <a onClick={logout}>Logout</a>
             </li>
           </ul>
         )}

@@ -26,30 +26,32 @@ const order = async (req, res) => {
   }
 };
 
-const getOrder=async (req,res)=>{
-try {
+const getOrder = async (req, res) => {
+  try {
 
-
-  
-  const orders=await OrderModel.find({})
-
-  console.log(orders)
-
-  
+    const userId = req.params.userId
+    console.log(req.params, "userrr")
+    const orders = await OrderModel.findOne({ userId: userId })
 
 
 
+    console.log(orders)
 
 
-} catch (error) {
-  console.log(error)
+
+
+
+
+
+  } catch (error) {
+    console.log(error)
+  }
+
+
+
+
 }
 
 
 
-
-}
-
-
-
-export { order ,getOrder}
+export { order, getOrder }
