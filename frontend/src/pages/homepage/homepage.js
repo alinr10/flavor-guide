@@ -42,7 +42,6 @@ export default function Homepage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is already logged in when the component mounts
     const storedToken = localStorage.getItem('userToken');
     const expirationTime = localStorage.getItem('tokenExpiration');
 

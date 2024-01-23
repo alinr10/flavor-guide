@@ -1,58 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 
-const userToken = localStorage.getItem('userToken')
-
-const user = jwtDecode(userToken)
-//const fullName = user.firstName + " " + user.lastName
-const userId = user.userId
-
-
-const handleOrder = (meal) => {
-
-    axios
-        .post("http://localhost:3001/order", {
-            meal,
-            userId
-        })
-        .then((response) => {
-            console.log("Backend'den gelen yanıt: ", response.data);
-
-            if (response.data.success) {
-                alert('sipariş verildi')
-            }
-        })
-        .catch((error) => {
-            console.error("API isteği hatası: ", error);
-        })
-
-};
-
-
-
 const RecipeList = () => {
+    const [userId, SetuserId] = useState(0);
+
+    useEffect(() => {
+        try {
+            const userToken = localStorage.getItem('userToken')
+            const user = jwtDecode(userToken)
+            SetuserId(user.userId)
+            //const fullName = user.firstName + " " + user.lastName
+            console.log("set user id to ", userId);
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }, []);
+
     const [orderInfo, setOrderInfo] = useState({
         name: '',
         content: '',
         price: ''
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setOrderInfo(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
+    const handleOrder = (meal) => {
+
+        axios
+            .post("http://localhost:3001/order", {
+                meal,
+                userId
+            })
+            .then((response) => {
+                console.log("Backend'den gelen yanıt: ", response.data);
+
+                if (response.data.success) {
+                    alert('sipariş verildi')
+                }
+            })
+            .catch((error) => {
+                console.error("API isteği hatası: ", error);
+            })
+
     };
-
-    // const handleOrder = (mealName) => {
-
-
-    //     console.log(mealName)
-
-    // };
 
     // Yemeklerin bilgileri
     const meals = [
