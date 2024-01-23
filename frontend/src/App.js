@@ -16,6 +16,7 @@ import Showprofile from './pages/profile/tabs/profile/personal/showProfile';
 import ShowAI from "./pages/profile/tabs/search-job/showAI";
 import Order from "./pages/profile/order"
 import Food from "./pages/profile/tabs/food"
+import Personalized from "./pages/profile/personalized"
 
 function App() {
   const navigate = useNavigate();
@@ -75,8 +76,10 @@ function App() {
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/showProfile" element={<Showprofile />} />
       <Route path="/showAI" element={<ShowAI />} />
-      <Route path="/order" element={<Order />} />
-      <Route path="/food" element={<Food />} />
+      <Route path="/order" element={<Food />} />
+      <Route path="/personalized" element={<Personalized />} />
+
+      {/* <Route path="/food" element={<Food />} /> */}
 
     </Routes>
   );

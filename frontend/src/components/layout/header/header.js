@@ -39,6 +39,8 @@ Flavor Guide            </Link>
             {!isProfileHidden && (
               <li>
                 <Link to={"/order"} >Order</Link>
+                <Link to={"/personalized"} >Personalized Meal
+</Link>
               </li>
               
             )}

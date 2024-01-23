@@ -26,5 +26,30 @@ const order = async (req, res) => {
   }
 };
 
+const getOrder=async (req,res)=>{
+try {
 
-export { order }
+
+  
+  const orders=await OrderModel.find({})
+
+  console.log(orders)
+
+  
+
+
+
+
+
+} catch (error) {
+  console.log(error)
+}
+
+
+
+
+}
+
+
+
+export { order ,getOrder}
