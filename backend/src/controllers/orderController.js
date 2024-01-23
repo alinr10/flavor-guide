@@ -29,23 +29,19 @@ const order = async (req, res) => {
 const getOrder = async (req, res) => {
   try {
 
-    const userId = req.params.userId
-    console.log(req.params, "userrr")
-    const orders = await OrderModel.findOne({ userId: userId })
+    const { userId } = req.query
+    console.log(userId, "useraaa")
+    const orders = await OrderModel.find({ userId: userId })
 
+    console.log(orders, "getttt")
 
-
-    console.log(orders)
-
-
-
-
-
-
-
+    res.status(200).json({ success: true, orders });
   } catch (error) {
-    console.log(error)
+    console.error("Error in order function:", error);
+
+    res.status(500).json({ success: false, error: "Internal Server Error" });
   }
+
 
 
 

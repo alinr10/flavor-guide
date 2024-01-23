@@ -5,6 +5,7 @@ import gifSearching from "../../../src/images/2-unscreen.gif";
 import gifHappy from "../../../src/images/b-unscreen.gif";
 import Select from "react-select";
 import { jwtDecode } from "jwt-decode";
+import { Table, TableHead, TableBody, TableRow, TableCell, Paper } from '@mui/material';
 
 function Personalized() {
     const [orders, setOrders] = useState([]);
@@ -13,16 +14,21 @@ function Personalized() {
     useEffect(() => {
         const fetchOrders = async () => {
             try {
-                const token = localStorage.getItem("accessToken");
+                const token = localStorage.getItem("userToken");
                 const user = jwtDecode(token);
                 const userId = user.userId
 
+                console.log("user ", userId)
 
-                const response = await axios.get(`http://localhost:3001/order/getorder`, { params: { userId } }, { withCredentials: true });
+
+                const response = await axios.get(`http://localhost:3001/order/getorder`, {
+                    params: { userId },
+                    withCredentials: true
+                });
 
                 console.log(response)
 
-                setOrders(response.data);
+                setOrders(response.data.orders);
                 setLoading(false);
             } catch (error) {
                 console.error("Error fetching orders:", error);
@@ -35,29 +41,41 @@ function Personalized() {
     return (
         <div className="wrapper">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sipariş ID</th>
-                        <th>Tarih</th>
-                        <th>Toplam Tutar</th>
-                        {/* Diğer başlık sütunları eklenebilir */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => (
-                        <tr key={order.orderId}>
-                            <td>{order.orderId}</td>
-                            <td>{order.date}</td>
-                            <td>{order.totalAmount}</td>
-                            {/* Diğer veri sütunları eklenebilir */}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+
+            <Paper elevation={3} style={{ margin: '20px', padding: '20px' }}>
+                <Table style={{ width: '100%', color: 'white' }}>
+                    <TableHead>
+                        <TableRow style={{ backgroundColor: '#3f51b5' }}>
+                            <TableCell style={{ width: '50%', color: 'white', fontWeight: 'bold' }}>Sipariş Adı</TableCell>
+                            <TableCell style={{ width: '50%', color: 'white', fontWeight: 'bold' }}>Tarih</TableCell>
+
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {orders.map((order) => (
+                            <TableRow key={order.orderId}>
+                                <TableCell>{order.name}</TableCell>
+                                <TableCell>
+                                    {new Date(order.date).toLocaleString('tr-TR', {
+                                        day: 'numeric',
+                                        month: 'numeric',
+                                        year: 'numeric',
+                                        hour: 'numeric',
+                                        minute: 'numeric',
+                                        second: 'numeric',
+                                        timeZone: 'Europe/Istanbul',
+                                    })}
+                                </TableCell>
+
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </Paper>
 
         </div>
+
     );
-}
+};
 
 export default Personalized;

@@ -146,7 +146,7 @@ function checkPasswordValidity(password) {
 const login = async (req, res, next) => {
   const { email, password } = req.body;
 
-  console.log()
+  //console.log()
   try {
     const user = await UserModel.findOne({ email: email });
     if (!user) {
