@@ -1487,3 +1487,97 @@ button:hover {
 #food {
   font-size: 30px;
 }
+
+
+.personalized-container {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.header button {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+.recommendation-item,
+.recommendation-result {
+  margin-bottom: 20px;
+}
+
+.recommendation-item img,
+.recommendation-result img {
+  max-width: 100%;
+  height: auto;
+}
+
+.recommendation-item div,
+.recommendation-result div {
+  margin-left: 20px;
+}
+
+.recommendation-item h3,
+.recommendation-result h3 {
+  font-size: 18px;
+  color: #333;
+}
+
+.recommendation-item p,
+.recommendation-result p {
+  font-size: 16px;
+  color: #555;
+}
+
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  margin-top: 10px;
+  /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}
+
+.personalized-container {
+  margin-top: 40px;
+  /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}
+
+.button-container {
+  margin-top: 10px;
+  /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}
+
+.personalized-container {
+  margin-top: 30px;
+  /* İstediğiniz boşluğu ayarlayabilirsiniz */
+}

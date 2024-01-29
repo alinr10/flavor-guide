@@ -22,6 +22,9 @@ import Myorder from "./pages/profile/my_orders"
 function App() {
   const navigate = useNavigate();
 
+
+
+
   //const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null); // Kullanıcının ID'sini saklamak için
 
@@ -77,9 +80,9 @@ function App() {
       <Route path="/profile/:id" element={<Profile />} />
       <Route path="/showProfile" element={<Showprofile />} />
       <Route path="/showAI" element={<ShowAI />} />
-      <Route path="/order" element={<Food />} />
-      <Route path="/personalized" element={<Personalized />} />
-      <Route path="/my-orders" element={<Myorder />} />
+      <Route path="/order" element={isLoggedIn ? <Food /> : <Navigate to="/" />} />
+      <Route path="/personalized" element={isLoggedIn ? <Personalized /> : <Navigate to="/" />} />
+      <Route path="/my-orders" element={isLoggedIn ? <Myorder /> : <Navigate to="/" />} />
 
       {/* <Route path="/food" element={<Food />} /> */}
 

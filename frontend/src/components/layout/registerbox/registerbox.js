@@ -33,7 +33,7 @@ export default function Registerbox(props) {
           X
         </a>
         <a className="logo">Register</a>
-        <ul>
+        {/* <ul>
           <li
             className={activeTab === "individual" ? "active" : undefined}
             onClick={() => {
@@ -52,9 +52,11 @@ export default function Registerbox(props) {
           >
             Corporate
           </li>
-        </ul>
+        </ul> */}
         <form onSubmit={register}>
+          <br></br>
           <div>
+
             <label>First Name:</label>
             <input
               type="text"

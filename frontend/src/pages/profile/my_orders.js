@@ -48,6 +48,7 @@ function Personalized() {
                         <TableRow style={{ backgroundColor: '#3f51b5' }}>
                             <TableCell style={{ width: '50%', color: 'white', fontWeight: 'bold' }}>Sipariş Adı</TableCell>
                             <TableCell style={{ width: '50%', color: 'white', fontWeight: 'bold' }}>Tarih</TableCell>
+                            <TableCell style={{ width: '50%', color: 'white', fontWeight: 'bold' }}>Tutar</TableCell>
 
                         </TableRow>
                     </TableHead>
@@ -66,6 +67,7 @@ function Personalized() {
                                         timeZone: 'Europe/Istanbul',
                                     })}
                                 </TableCell>
+                                <TableCell>{order.price}</TableCell>
 
                             </TableRow>
                         ))}
